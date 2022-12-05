@@ -30,30 +30,28 @@ int main() {
             R"(C:\Users\enzoc\OneDrive - Griffith College\Dev\workspaces\CLionProjects\AdventOfCode2022\input.txt)");
 
     // Create a map of string pairs to count values.
-    std::unordered_map<std::pair<std::string, std::string>, size_t> count_map_p1 = {
-            {{ "A", "X" }, 4 },
-            {{ "A", "Y" }, 8 },
-            {{ "A", "Z" }, 3 },
-            {{ "B", "X" }, 1 },
-            {{ "B", "Y" }, 5 },
-            {{ "B", "Z" }, 9 },
-            {{ "C", "X" }, 7 },
-            {{ "C", "Y" }, 2 },
-            {{ "C", "Z" }, 6 },
+    std::unordered_map<std::pair<std::string_view, std::string_view>, size_t> count_map_p1 = {
+            {{ "A", "X" }, 4ull },
+            {{ "A", "Y" }, 8ull },
+            {{ "A", "Z" }, 3ull },
+            {{ "B", "X" }, 1ull },
+            {{ "B", "Y" }, 5ull },
+            {{ "B", "Z" }, 9ull },
+            {{ "C", "X" }, 7ull },
+            {{ "C", "Y" }, 2ull },
+            {{ "C", "Z" }, 6ull },
     };
 
     //split the file when blank line is found
-    std::string str{};
-    std::vector<std::pair<std::string, std::string>> pair{};
+    std::vector<std::pair<std::string_view, std::string_view>> pair{};
 
-    while (std::getline(file, str)) {
+    for (std::string line; std::getline(file, line);) {
         //each line contains two letters separated by a space
-        std::istringstream iss(str);
+        std::istringstream iss(line);
         std::string a;
         std::string b;
         iss >> a >> b;
         pair.emplace_back(a, b);
-
     }
 
     // Initialize the count vector with 0s.
@@ -70,16 +68,16 @@ int main() {
 
     // PART 2
     // Create a map of string pairs to count values.
-    std::unordered_map<std::pair<std::string, std::string>, size_t> count_map_p2 = {
-            {{ "A", "X" }, 3 },
-            {{ "A", "Y" }, 4 },
-            {{ "A", "Z" }, 8 },
-            {{ "B", "X" }, 1 },
-            {{ "B", "Y" }, 5 },
-            {{ "B", "Z" }, 9 },
-            {{ "C", "X" }, 2 },
-            {{ "C", "Y" }, 6 },
-            {{ "C", "Z" }, 7 },
+    std::unordered_map<std::pair<std::string_view, std::string_view>, size_t> count_map_p2 = {
+            {{ "A", "X" }, 3ull },
+            {{ "A", "Y" }, 4ull },
+            {{ "A", "Z" }, 8ull },
+            {{ "B", "X" }, 1ull },
+            {{ "B", "Y" }, 5ull },
+            {{ "B", "Z" }, 9ull },
+            {{ "C", "X" }, 2ull },
+            {{ "C", "Y" }, 6ull },
+            {{ "C", "Z" }, 7ull },
     };
 
     // Initialize the count vector with 0s.
