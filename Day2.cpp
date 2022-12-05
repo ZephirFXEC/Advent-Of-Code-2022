@@ -30,7 +30,7 @@ int main() {
             R"(C:\Users\enzoc\OneDrive - Griffith College\Dev\workspaces\CLionProjects\AdventOfCode2022\input.txt)");
 
     // Create a map of string pairs to count values.
-    std::unordered_map<std::pair<std::string, std::string>, size_t> count_map = {
+    std::unordered_map<std::pair<std::string, std::string>, size_t> count_map_p1 = {
             {{ "A", "X" }, 4 },
             {{ "A", "Y" }, 8 },
             {{ "A", "Z" }, 3 },
@@ -53,6 +53,7 @@ int main() {
         std::string b;
         iss >> a >> b;
         pair.emplace_back(a, b);
+
     }
 
     // Initialize the count vector with 0s.
@@ -60,9 +61,35 @@ int main() {
 
     // Iterate over the pairs and update the count vector.
     for (size_t i = 0; i < pair.size(); ++i) {
-        count[i] = count_map[pair[i]];
+        count[i] = count_map_p1[pair[i]];
     }
 
     // Return the sum of the count vector.
-    return std::accumulate(count.begin(), count.end(), 0);
+    int sum = std::accumulate(count.begin(), count.end(), 0); // Part 1
+
+
+    // PART 2
+    // Create a map of string pairs to count values.
+    std::unordered_map<std::pair<std::string, std::string>, size_t> count_map_p2 = {
+            {{ "A", "X" }, 3 },
+            {{ "A", "Y" }, 4 },
+            {{ "A", "Z" }, 8 },
+            {{ "B", "X" }, 1 },
+            {{ "B", "Y" }, 5 },
+            {{ "B", "Z" }, 9 },
+            {{ "C", "X" }, 2 },
+            {{ "C", "Y" }, 6 },
+            {{ "C", "Z" }, 7 },
+    };
+
+    // Initialize the count vector with 0s.
+    std::vector<size_t> count2(pair.size(), 0);
+
+    // Iterate over the pairs and update the count vector.
+    for (size_t i = 0; i < pair.size(); ++i) {
+        count2[i] = count_map_p2[pair[i]];
+    }
+
+    // Return the sum of the count vector.
+    return std::accumulate(count2.begin(), count2.end(), 0); // Part 2
 }
